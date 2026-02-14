@@ -1,5 +1,7 @@
 ## AI Forecasting & Planning Agent – Code Structure & Usage
 
+**Repository:** [github.com/ganeshlucky07/AI_FORECASTING](https://github.com/ganeshlucky07/AI_FORECASTING)
+
 This project is a minimal full‑stack example for an **AI Forecasting & Planning Agent** with three main modules:
 
 - **Demand Forecasting**
