@@ -1,0 +1,186 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f172a;
+  color: #e5e7eb;
+}
+
+.app-root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header {
+  padding: 1.75rem 2rem 1rem;
+  background: radial-gradient(circle at top left, #1d4ed8, #0f172a);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 1.8rem;
+}
+
+.subtitle {
+  margin: 0.5rem 0 0;
+  color: #cbd5f5;
+  font-size: 0.95rem;
+}
+
+.tab-bar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 2rem 0.75rem;
+  background: #020617;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.tab {
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.tab:hover {
+  border-color: rgba(148, 163, 184, 0.8);
+}
+
+.tab.active {
+  background: linear-gradient(to right, #2563eb, #4f46e5);
+  border-color: transparent;
+}
+
+.app-main {
+  padding: 1.5rem 2rem 2rem;
+  flex: 1;
+  max-width: 1100px;
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+.card {
+  margin-top: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 0.9rem;
+  background: radial-gradient(circle at top left, rgba(37, 99, 235, 0.08), #020617);
+  border: 1px solid rgba(148, 163, 184, 0.4);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  margin-bottom: 0.75rem;
+}
+
+input,
+textarea,
+button {
+  font-family: inherit;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea {
+  border-radius: 0.5rem;
+  border: 1px solid rgba(148, 163, 184, 0.6);
+  padding: 0.45rem 0.6rem;
+  background: rgba(15, 23, 42, 0.9);
+  color: #e5e7eb;
+}
+
+textarea.json-input {
+  width: 100%;
+}
+
+input:focus,
+textarea:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 1px rgba(96, 165, 250, 0.6);
+}
+
+button {
+  border-radius: 999px;
+  border: none;
+  padding: 0.5rem 1.05rem;
+  background: linear-gradient(to right, #2563eb, #4f46e5);
+  color: #e5e7eb;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: #9ca3af;
+  margin-top: 0.25rem;
+}
+
+.status {
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  color: #a7f3d0;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+  padding: 0.4rem 0.5rem;
+  text-align: left;
+}
+
+.chart-container {
+  margin-top: 0.75rem;
+  height: 350px;
+}
+
+code {
+  background: rgba(15, 23, 42, 0.9);
+  padding: 0.15rem 0.35rem;
+  border-radius: 0.35rem;
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .app-main {
+    padding: 1.25rem 1.1rem 1.75rem;
+  }
+
+  .app-header {
+    padding-inline: 1.1rem;
+  }
+}
+

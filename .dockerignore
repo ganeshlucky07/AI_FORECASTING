@@ -1,0 +1,17 @@
+# Dependencies and local env
+node_modules
+.venv
+venv
+env
+.git
+.gitignore
+
+# Build and cache
+frontend/dist
+__pycache__
+*.pyc
+*.db
+.pytest_cache
+.cursor
+*.md
+!README.md

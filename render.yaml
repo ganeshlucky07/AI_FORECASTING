@@ -1,0 +1,19 @@
+# Render.com blueprint: one web service (Docker) for the full app.
+# Docs: https://render.com/docs/blueprint-spec
+services:
+  - type: web
+    name: ai-forecasting
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    envVars:
+      - key: SERVE_FRONTEND
+        value: "1"
+      - key: STATIC_DIR
+        value: /app/static
+      # Optional: add DATABASE_URL for PostgreSQL (create a Render PostgreSQL DB and paste URL).
+      # - key: DATABASE_URL
+      #   sync: false
+      # Optional: restrict CORS to your Render URL after deploy.
+      # - key: CORS_ORIGINS
+      #   value: https://ai-forecasting.onrender.com

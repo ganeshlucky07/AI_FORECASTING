@@ -1,0 +1,2 @@
+# Optional: add system packages here if needed (Streamlit Cloud)
+# e.g. libgl1-mesa-glx
