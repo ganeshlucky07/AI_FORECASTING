@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { apiFetch } from "../api";
 
 interface BudgetForecastPoint {
   date: string;
@@ -20,7 +21,7 @@ export const BudgetPage: React.FC = () => {
   const [forecast, setForecast] = useState<BudgetForecastResponse | null>(null);
 
   const downloadExcel = async () => {
-    const res = await fetch("/api/budget/export/excel?horizon_months=6");
+    const res = await apiFetch("/api/budget/export/excel?horizon_months=6");
     const blob = await res.blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -34,7 +35,7 @@ export const BudgetPage: React.FC = () => {
   const handleJsonUpload = async (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     try {
       const parsed = JSON.parse(e.target.value);
-      const res = await fetch("/api/budget/upload_history", {
+      const res = await apiFetch("/api/budget/upload_history", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(parsed)
@@ -47,7 +48,7 @@ export const BudgetPage: React.FC = () => {
   };
 
   const loadForecast = async () => {
-    const res = await fetch("/api/budget/forecast?horizon_months=6");
+    const res = await apiFetch("/api/budget/forecast?horizon_months=6");
     const data = (await res.json()) as BudgetForecastResponse;
     setForecast(data);
   };

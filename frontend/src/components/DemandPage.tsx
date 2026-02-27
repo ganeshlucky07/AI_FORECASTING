@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { apiFetch } from "../api";
 import {
   LineChart,
   Line,
@@ -30,7 +31,7 @@ export const DemandPage: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   const downloadFile = async (url: string, filename: string) => {
-    const res = await fetch(url);
+    const res = await apiFetch(url);
     const blob = await res.blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -50,7 +51,7 @@ export const DemandPage: React.FC = () => {
 
     setUploadMessage(null);
 
-    const res = await fetch("/api/demand/upload_csv", {
+    const res = await apiFetch("/api/demand/upload_csv", {
       method: "POST",
       body: formData
     });
@@ -62,7 +63,7 @@ export const DemandPage: React.FC = () => {
   const loadForecast = async () => {
     setLoading(true);
     try {
-      const res = await fetch("/api/demand/forecast?horizon_days=30");
+      const res = await apiFetch("/api/demand/forecast?horizon_days=30");
       const data = (await res.json()) as ForecastResponse;
       setForecast(data);
     } finally {

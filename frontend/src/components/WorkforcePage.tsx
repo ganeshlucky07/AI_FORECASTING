@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { apiFetch } from "../api";
 
 interface WorkforcePlanEntry {
   date: string;
@@ -22,7 +23,7 @@ export const WorkforcePage: React.FC = () => {
   const [plan, setPlan] = useState<WorkforcePlanResponse | null>(null);
 
   const downloadExcel = async () => {
-    const res = await fetch("/api/workforce/export/excel");
+    const res = await apiFetch("/api/workforce/export/excel");
     const blob = await res.blob();
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
@@ -44,7 +45,7 @@ export const WorkforcePage: React.FC = () => {
       productivity_per_employee: productivity
     };
 
-    const res = await fetch("/api/workforce/plan", {
+    const res = await apiFetch("/api/workforce/plan", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body)
