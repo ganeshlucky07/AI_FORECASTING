@@ -3,7 +3,15 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
 
 # Use DATABASE_URL in production (e.g. PostgreSQL); default SQLite for local/dev.
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./forecasting.db")
+# For containerized environments, use /app directory for SQLite
+if os.getenv("DATABASE_URL"):
+    DATABASE_URL = os.getenv("DATABASE_URL")
+else:
+    # Use /tmp for SQLite in containerized environments (Render, Docker)
+    # as it may not have write permissions in /app
+    db_path = "/tmp/forecasting.db" if os.path.isdir("/tmp") else "./forecasting.db"
+    DATABASE_URL = f"sqlite:///{db_path}"
+
 # Render/Heroku use postgres:// but SQLAlchemy 1.4+ expects postgresql://
 if DATABASE_URL.startswith("postgres://"):
     DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
